@@ -3,13 +3,18 @@ version: "3.8"
 services:
   dungeons_and_dragons_bot:
     container_name: dungeons-and-dragons-bot
-    build: ./
-    working_dir: /usr/src/dungeons_and_dragons_bot/
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - PROJECT_DIR=${PROJECT_DIR}
     links:
       - database
     volumes:
-      - ./src/:/usr/src/dungeons_and_dragons_bot/src/
-      - ./game_data/:/usr/src/dungeons_and_dragons_bot/game_data/
+      - ./src/:${PROJECT_DIR}/src/
+      - ./game_data/:${PROJECT_DIR}/game_data/
+      - ./logs/:${PROJECT_DIR}/logs/
 
   database:
     container_name: database
@@ -19,6 +24,6 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=test
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}

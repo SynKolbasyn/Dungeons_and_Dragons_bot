@@ -3,6 +3,9 @@ FROM python:latest
 LABEL authors="Andrew Kozmin"
 
 RUN python3 -m pip install -U pip && \
-    pip install "psycopg[binary]"
+    pip install "psycopg[binary]" && \
+    pip install aiogram
 
-CMD ["tail", "-f", "/dev/null"]
+WORKDIR /usr/src/dungeons_and_dragons_bot/
+
+CMD ["python3", "src/main.py"]
