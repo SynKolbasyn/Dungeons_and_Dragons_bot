@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  dungeons_and_dragons_bot:
+    container_name: dungeons-and-dragons-bot
+    build: ./
+    working_dir: /usr/src/dungeons_and_dragons_bot/
+    links:
+      - database
+    volumes:
+      - ./src/:/usr/src/dungeons_and_dragons_bot/src/
+      - ./game_data/:/usr/src/dungeons_and_dragons_bot/game_data/
+
+  database:
+    container_name: database
+    image: postgres:latest
+    volumes:
+      - ./database/:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=test
