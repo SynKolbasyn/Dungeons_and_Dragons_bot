@@ -1,4 +1,4 @@
-import os
+from os import getenv
 import logging
 import asyncio
 
@@ -7,8 +7,8 @@ import aiogram
 import distributor
 
 
-PROJECT_DIR = os.getenv("PROJECT_DIR")
-TOKEN = os.getenv("BOT_TOKEN")
+PROJECT_DIR = getenv("PROJECT_DIR")
+TOKEN = getenv("BOT_TOKEN")
 
 dp = aiogram.Dispatcher()
 
