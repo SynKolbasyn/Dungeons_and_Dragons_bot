@@ -13,7 +13,7 @@ def get_data(id: int, first_name: str, last_name: str, full_name: str, username:
         with conn.cursor() as cur:
             cur.execute(
                 f"""
-                SELECT * FROM players WHERE id = {id}
+                SELECT id, first_name, last_name, full_name, username FROM players WHERE id = {id}
                 """
             )
             res = cur.fetchone()
