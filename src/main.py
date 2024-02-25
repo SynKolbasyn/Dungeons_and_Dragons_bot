@@ -15,13 +15,16 @@ dp = aiogram.Dispatcher()
 
 @dp.message()
 async def main_handler(message: aiogram.types.Message) -> None:
+    logging.log(logging.INFO, f"id -> {message.from_user.id} | username -> {message.from_user.full_name} | text -> {message.text}")
     answer, buttons, image = distributor.process_action(message)
     await message.answer_photo(photo=image, caption=answer, reply_markup=buttons)
 
 
 @dp.callback_query()
 async def main_callback(message: aiogram.types.CallbackQuery) -> None:
-    answer, buttons, image = distributor.process_action(message.message)
+    logging.log(logging.INFO,
+                f"id -> {message.from_user.id} | username -> {message.from_user.full_name} | text -> {message.data}")
+    answer, buttons, image = distributor.process_action(message)
     await message.message.edit_media(
         media=aiogram.types.InputMediaPhoto(media=image, caption=answer),
         reply_markup=buttons
