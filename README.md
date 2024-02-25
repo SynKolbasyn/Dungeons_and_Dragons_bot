@@ -15,3 +15,9 @@ git clone https://github.com/SynKolbasyn/Dungeons_and_Dragons_bot.git
 ```Bash
 docker compose up --build
 ```
+
+## Tests
+
+```Bash
+python -m pytest
+```

@@ -4,8 +4,9 @@ from src.player import Player
 
 @pytest.fixture()
 def player():
-    return Player()
+    data = {"id": 0, "first_name": "empty", "last_name": "empty", "full_name": "empty", "username": "empty"}
+    return Player(data)
 
 
 def test_answer(player: Player):
-    assert "test - 1" == player.process_request("test")
+    assert "id: 0\nfull_name: empty\nusername: empty" == player.process_request("test")
