@@ -19,6 +19,18 @@ class Player:
         self.last_name = data["last_name"]
         self.full_name = data["full_name"]
         self.username = data["username"]
+        self.state = data["state"]
 
-    def process_request(self, request: str) -> str:
-        return f"{self.username}: {request}"
+    def сhoosing_a_race(self, request: str) -> tuple[str, str, list[list[str]]]:
+        match request:
+            case _:
+                return "Unknown action", f"{PROJECT_DIR}/game_data/images/fantasy-races.png", [[i] for i in RACES]
+
+    def process_request(self, request: str) -> tuple[str, str, list[list[str]]]:
+        answer = ""
+        image = ""
+        buttons = []
+        match self.state:
+            case "Choosing a race":
+                answer, image, buttons = self.сhoosing_a_race(request)
+        return answer, image, buttons

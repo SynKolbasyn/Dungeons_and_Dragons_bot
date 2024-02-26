@@ -11,7 +11,8 @@ db_name = getenv("POSTGRES_PLAYERS_DB")
 def check_database(cur: psycopg.Cursor | psycopg.ServerCursor) -> None:
     cur.execute(
         """
-        CREATE TABLE IF NOT EXISTS players (id bigint, first_name text, last_name text, full_name text, username text);
+        CREATE TABLE IF NOT EXISTS players
+        (id bigint, first_name text, last_name text, full_name text, username text, state text);
         """
     )
 
@@ -23,7 +24,7 @@ def get_data(id: int, first_name: str, last_name: str, full_name: str, username:
 
             cur.execute(
                 f"""
-                SELECT id, first_name, last_name, full_name, username FROM players WHERE id = {id}
+                SELECT id, first_name, last_name, full_name, username, state FROM players WHERE id = {id}
                 """
             )
             res = cur.fetchone()
@@ -33,12 +34,20 @@ def get_data(id: int, first_name: str, last_name: str, full_name: str, username:
                     "first_name": first_name,
                     "last_name": last_name,
                     "full_name": full_name,
-                    "username": username
+                    "username": username,
+                    "state": "Choosing a race"
                 }
                 cur.execute(
                     f"""
-                    INSERT INTO players (id, first_name, last_name, full_name, username)
-                    VALUES ('{result["id"]}', '{result["first_name"]}', '{result["last_name"]}', '{result["full_name"]}', '{result["username"]}')
+                    INSERT INTO players (id, first_name, last_name, full_name, username, state)
+                    VALUES (
+                    '{result["id"]}',
+                    '{result["first_name"]}',
+                    '{result["last_name"]}',
+                    '{result["full_name"]}',
+                    '{result["username"]}',
+                    '{result["state"]}'
+                    )
                     """
                 )
                 return result
@@ -47,5 +56,6 @@ def get_data(id: int, first_name: str, last_name: str, full_name: str, username:
                 "first_name": res[1],
                 "last_name": res[2],
                 "full_name": res[3],
-                "username": res[4]
+                "username": res[4],
+                "state": res[5]
             }
