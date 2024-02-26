@@ -5,11 +5,11 @@ import psycopg
 
 user = getenv("POSTGRES_USER")
 password = getenv("POSTGRES_PASSWORD")
-db_name = getenv("POSTGRES_DB")
+db_name = getenv("POSTGRES_PLAYERS_DB")
 
 
 def get_data(id: int, first_name: str, last_name: str, full_name: str, username: str) -> dict:
-    with psycopg.connect(f"host=database port=5432 user={user} password={password} dbname={db_name}") as conn:
+    with psycopg.connect(f"host=players_database port=5432 user={user} password={password} dbname={db_name}") as conn:
         with conn.cursor() as cur:
             cur.execute(
                 f"""

@@ -9,4 +9,4 @@ def player():
 
 
 def test_answer(player: Player):
-    assert "id: 0\nfull_name: empty\nusername: empty" == player.process_request("test")
+    assert "empty: test" == player.process_request("test")
