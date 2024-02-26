@@ -20,6 +20,7 @@ class Player:
         self.full_name = data["full_name"]
         self.username = data["username"]
         self.state = data["state"]
+        # TODO: Сделать sub_state, пример - state - Creating character, sub_state - [Choosing a race, Choosing a class]
 
     def сhoosing_a_race(self, request: str) -> tuple[str, str, list[list[str]]]:
         match request:

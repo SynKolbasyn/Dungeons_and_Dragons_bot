@@ -8,6 +8,10 @@ password = getenv("POSTGRES_PASSWORD")
 db_name = getenv("POSTGRES_PLAYERS_DB")
 
 
+# TODO: Сделать нулевого игрока в json формате, данными которого будет заполняться новый игрок
+# TODO: Автоматизировать этот файл, чтобы он сам подстраивался под нулевого игрока
+
+
 def check_database(cur: psycopg.Cursor | psycopg.ServerCursor) -> None:
     cur.execute(
         """
