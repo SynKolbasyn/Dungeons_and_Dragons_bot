@@ -23,7 +23,7 @@ services:
     container_name: players-database
     image: postgres:latest
     volumes:
-      - ./database/:/var/lib/postgresql/data/
+      - ./players_database/:/var/lib/postgresql/data/
     ports:
       - "5432:5432"
     environment:

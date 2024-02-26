@@ -8,9 +8,19 @@ password = getenv("POSTGRES_PASSWORD")
 db_name = getenv("POSTGRES_PLAYERS_DB")
 
 
+def check_database(cur: psycopg.Cursor | psycopg.ServerCursor) -> None:
+    cur.execute(
+        """
+        CREATE TABLE IF NOT EXISTS players (id bigint, first_name text, last_name text, full_name text, username text);
+        """
+    )
+
+
 def get_data(id: int, first_name: str, last_name: str, full_name: str, username: str) -> dict:
     with psycopg.connect(f"host=players_database port=5432 user={user} password={password} dbname={db_name}") as conn:
         with conn.cursor() as cur:
+            check_database(cur)
+
             cur.execute(
                 f"""
                 SELECT id, first_name, last_name, full_name, username FROM players WHERE id = {id}
