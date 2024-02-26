@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+env:
+  PROJECT_DIR: /home/runner/work/Dungeons_and_Dragons_bot/Dungeons_and_Dragons_bot
+
 jobs:
   run-tests:
     name: Test
