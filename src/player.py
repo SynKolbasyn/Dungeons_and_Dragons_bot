@@ -20,10 +20,24 @@ class Player:
         self.full_name = data["full_name"]
         self.username = data["username"]
         self.state = data["state"]
-        # TODO: Сделать sub_state, пример - state - Creating character, sub_state - [Choosing a race, Choosing a class]
+        self.sub_state = data["sub_state"]
 
-    def сhoosing_a_race(self, request: str) -> tuple[str, str, list[list[str]]]:
-        match request:
+    def сhoose_race(self, request: str) -> tuple[str, str, list[list[str]]]:
+        if request in RACES.keys():
+            # TODO: Нагенерить картинки рас и отправлять их в зависимости от выбора игрока
+            # TODO: Написать описание расы и отправлять его в зависимости от выбора игрока
+            return "Сonfirm the choice of the race?", f"{PROJECT_DIR}/game_data/images/fantasy-races.png", [["Back", "Confirm"]]
+        if request == "confirm race":
+            self.sub_state = "Chooses a class"
+            return "Choose a class", f"{PROJECT_DIR}/game_data/images/fantasy-races.png", [[i] for i in CLASSES]
+        if request == "Back to races":
+            return "Choose a race", f"{PROJECT_DIR}/game_data/images/fantasy-races.png", [[i] for i in RACES]
+        return "Choose a race", f"{PROJECT_DIR}/game_data/images/fantasy-races.png", [[i] for i in RACES]
+
+    def сreate_character(self, request: str) -> tuple[str, str, list[list[str]]]:
+        match self.sub_state:
+            case "Chooses a race":
+                return self.сhoose_race(request)
             case _:
                 return "Unknown action", f"{PROJECT_DIR}/game_data/images/fantasy-races.png", [[i] for i in RACES]
 
@@ -32,6 +46,8 @@ class Player:
         image = ""
         buttons = []
         match self.state:
-            case "Choosing a race":
-                answer, image, buttons = self.сhoosing_a_race(request)
+            case "Creates a character":
+                answer, image, buttons = self.сreate_character(request)
+            case _:
+                answer, image, buttons = "ERROR", f"{PROJECT_DIR}/game_data/images/fantasy-races.png", [[i] for i in RACES]
         return answer, image, buttons

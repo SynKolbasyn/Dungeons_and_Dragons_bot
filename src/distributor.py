@@ -1,4 +1,5 @@
 from os import getenv
+
 import aiogram
 
 from player import Player
@@ -34,6 +35,7 @@ def process_action(message: aiogram.types.Message | aiogram.types.CallbackQuery)
     answer, image, buttons = player.process_request(
         message.text if type(message) is aiogram.types.Message else message.data
     )
+    db.save_data(player.__dict__)
     return (
         answer,
         aiogram.types.InlineKeyboardMarkup(inline_keyboard=create_buttons_from_str(buttons)),

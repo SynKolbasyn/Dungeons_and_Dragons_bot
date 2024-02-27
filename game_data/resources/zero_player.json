@@ -1,0 +1,30 @@
+{
+  "id": {
+    "val": 0,
+    "type": "bigint"
+  },
+  "first_name": {
+    "val": "zero",
+    "type": "text"
+  },
+  "last_name": {
+    "val": "player",
+    "type": "text"
+  },
+  "full_name": {
+    "val": "zero player",
+    "type": "text"
+  },
+  "username": {
+    "val": "zeroplayer",
+    "type": "text"
+  },
+  "state": {
+    "val": "Creates a character",
+    "type": "text"
+  },
+  "sub_state": {
+    "val": "Chooses a race",
+    "type": "text"
+  }
+}
