@@ -22,7 +22,7 @@ class Player:
         self.state = data["state"]
         self.sub_state = data["sub_state"]
 
-    def сhoose_race(self, request: str) -> tuple[str, str, list[list[str]]]:
+    def choose_race(self, request: str) -> tuple[str, str, list[list[str]]]:
         if request in RACES.keys():
             # TODO: Нагенерить картинки рас и отправлять их в зависимости от выбора игрока
             # TODO: Написать описание расы и отправлять его в зависимости от выбора игрока
@@ -34,10 +34,10 @@ class Player:
             return "Choose a race", f"{PROJECT_DIR}/game_data/images/fantasy-races.png", [[i] for i in RACES]
         return "Choose a race", f"{PROJECT_DIR}/game_data/images/fantasy-races.png", [[i] for i in RACES]
 
-    def сreate_character(self, request: str) -> tuple[str, str, list[list[str]]]:
+    def create_character(self, request: str) -> tuple[str, str, list[list[str]]]:
         match self.sub_state:
             case "Chooses a race":
-                return self.сhoose_race(request)
+                return self.choose_race(request)
             case _:
                 return "Unknown action", f"{PROJECT_DIR}/game_data/images/fantasy-races.png", [[i] for i in RACES]
 
@@ -47,7 +47,7 @@ class Player:
         buttons = []
         match self.state:
             case "Creates a character":
-                answer, image, buttons = self.сreate_character(request)
+                answer, image, buttons = self.create_character(request)
             case _:
                 answer, image, buttons = "ERROR", f"{PROJECT_DIR}/game_data/images/fantasy-races.png", [[i] for i in RACES]
         return answer, image, buttons
