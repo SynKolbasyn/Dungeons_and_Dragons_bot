@@ -1,5 +1,4 @@
 {
-  // classes
   "Barbarian": "Варвар",
   "Bard": "Брад",
   "Cleric": "Жрец",
@@ -12,7 +11,7 @@
   "Sorcerer": "Чародей",
   "Warlock": "Колдун",
   "Wizard": "Волшебник",
-  // race
+
   "Dwarf": "Дварф",
   "Elf": "Эльф",
   "Halfling": "Полурослик",
@@ -22,13 +21,13 @@
   "Half-Elf": "Полуэльф",
   "Half-Orc": "Полуорк",
   "Tiefling": "Тифлинг",
-  // coins
+
   "Gold": "Золотая",
   "Silver": "Серебряная",
   "Copper": "Медная",
   "Platinum": "Платиновая",
   "Electrum": "Электрумовая",
-  // armor
+
   "Light armor": "Лёгкий доспех",
   "Padded": "Стёганный",
   "Leather": "Кожаный",
@@ -48,7 +47,7 @@
   "Plate": "Латы",
 
   "Shield": "Щит",
-  // weapon
+
   "Weapon": "оружие",
   "Simple Melee Weapon": "Простое рукопашное оружие",
   "Quarterstaff": "Боевой посох",
@@ -97,4 +96,3 @@
   "Blowgun": "Духовая трубка",
   "Net": "Сеть"
 }
-// translator was kicked to sleep
