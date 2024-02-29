@@ -35,6 +35,7 @@ def process_action(message: aiogram.types.Message | aiogram.types.CallbackQuery)
     answer, image, buttons = player.process_request(
         message.text if type(message) is aiogram.types.Message else message.data
     )
+    player.__dict__["class"] = player.__dict__.pop("clas")
     db.save_data(player.__dict__)
     return (
         answer,

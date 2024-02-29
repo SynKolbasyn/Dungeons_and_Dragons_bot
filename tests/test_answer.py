@@ -25,17 +25,36 @@ def player():
     return Player(data)
 
 
-def test_answer(player: Player):
+def test_answer_race(player: Player):
     answer, _, _ = player.process_request("/start")
     assert "Choose a race" == answer
 
 
-def test_buttons(player: Player):
+def test_buttons_race(player: Player):
     global RACES
     _, _, buttons = player.process_request("/start")
     assert [[i] for i in RACES] == buttons
 
 
-def test_image(player: Player):
+def test_image_race(player: Player):
     _, image, _ = player.process_request("/start")
     assert f"{PROJECT_DIR}/game_data/images/fantasy-races.png" == image
+
+
+def test_answer_class(player: Player):
+    player.sub_state = "Chooses a class"
+    answer, _, _ = player.process_request("/start")
+    assert "Choose a class" == answer
+
+
+def test_buttons_class(player: Player):
+    global RACES
+    player.sub_state = "Chooses a class"
+    _, _, buttons = player.process_request("/start")
+    assert [[i] for i in CLASSES] == buttons
+
+
+def test_image_class(player: Player):
+    player.sub_state = "Chooses a class"
+    _, image, _ = player.process_request("/start")
+    assert f"{PROJECT_DIR}/game_data/images/character-classes.png" == image
