@@ -21,6 +21,7 @@ docker compose up --build
 3. Add character creation mechanics.
 4. Add combat mechanics
 5. Add item mechanics
+6. Add illustrations
 
 ## Tests
 Before doing this, you should set the PROJECT_DIR system variable, which will store the path to the folder of this project
