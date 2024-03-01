@@ -1,4 +1,4 @@
-# Dungeons and Dragons bot
+# Dungeons and Dragons bot рандомный текст
 Telegram bot for the game "Dungeons and Dragons"
 
 ## Contributing
