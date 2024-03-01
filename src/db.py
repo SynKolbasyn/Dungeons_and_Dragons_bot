@@ -44,7 +44,9 @@ def generate_zero_player() -> dict:
 def get_data(id: int, first_name: str, last_name: str, full_name: str, username: str) -> dict:
     with psycopg.connect(f"host=players_database port=5432 user={user} password={password} dbname={db_name}") as conn:
         with conn.cursor() as cur:
-            cur.execute(f"CREATE TABLE IF NOT EXISTS players ({template_with_types});")
+            cur.execute(f"CREATE TABLE IF NOT EXISTS players ();")
+            for k, v in zip(ZERO_PLAYER.keys(), ZERO_PLAYER.values()):
+                cur.execute(f"ALTER TABLE players ADD COLUMN IF NOT EXISTS {k} {v["type"]};")
 
             cur.execute(f"SELECT {template} FROM players WHERE id = {id};")
             res = cur.fetchone()

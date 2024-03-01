@@ -26,5 +26,17 @@
   "sub_state": {
     "val": "Chooses a race",
     "type": "text"
+  },
+  "language": {
+    "val": "en",
+    "type": "text"
+  },
+  "race": {
+    "val": "",
+    "type": "text"
+  },
+  "class": {
+    "val": "",
+    "type": "text"
   }
 }
