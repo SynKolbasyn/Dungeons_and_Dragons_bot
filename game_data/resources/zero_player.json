@@ -38,5 +38,13 @@
   "class": {
     "val": "",
     "type": "text"
+  },
+  "lvl": {
+    "val": "1",
+    "type": "smallint"
+  },
+  "exp": {
+    "val": "0",
+    "type": "bigint"
   }
 }
