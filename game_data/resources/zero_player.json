@@ -40,11 +40,35 @@
     "type": "text"
   },
   "lvl": {
-    "val": "1",
+    "val": 1,
     "type": "smallint"
   },
   "exp": {
-    "val": "0",
+    "val": 0,
     "type": "bigint"
+  },
+  "strength": {
+    "val": 0,
+    "type": "smallint"
+  },
+  "dexterity": {
+    "val": 0,
+    "type": "smallint"
+  },
+  "constitution": {
+    "val": 0,
+    "type": "smallint"
+  },
+  "intelligence": {
+    "val": 0,
+    "type": "smallint"
+  },
+  "wisdom": {
+    "val": 0,
+    "type": "smallint"
+  },
+  "charisma": {
+    "val": 0,
+    "type": "smallint"
   }
 }

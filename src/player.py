@@ -26,6 +26,12 @@ class Player:
         self.clas = data["class"]
         self.lvl = data["lvl"]
         self.exp = data["exp"]
+        self.strength = data["strength"]
+        self.dexterity = data["dexterity"]
+        self.constitution = data["constitution"]
+        self.intelligence = data["intelligence"]
+        self.wisdom = data["wisdom"]
+        self.charisma = data["charisma"]
 
     def choose_race(self, request: str) -> tuple[str, str, list[list[str]]]:
         if request in RACES.keys():

@@ -46,7 +46,7 @@ def get_data(id: int, first_name: str, last_name: str, full_name: str, username:
         with conn.cursor() as cur:
             cur.execute(f"CREATE TABLE IF NOT EXISTS players ();")
             for k, v in zip(ZERO_PLAYER.keys(), ZERO_PLAYER.values()):
-                cur.execute(f"ALTER TABLE players ADD COLUMN IF NOT EXISTS {k} {v["type"]};")
+                cur.execute(f"ALTER TABLE players ADD COLUMN IF NOT EXISTS {k} {v["type"]} DEFAULT {v["value"]};")
 
             cur.execute(f"SELECT {template} FROM players WHERE id = {id};")
             res = cur.fetchone()

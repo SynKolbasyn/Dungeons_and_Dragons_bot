@@ -168,5 +168,11 @@
   "Тяжёлый арбалет": "Crossbow, heavy",
   "Длинный лук": "Longbow",
   "Духовая трубка": "Blowgun",
-  "Сеть": "Net"
+  "Сеть": "Net",
+  "strength": "cила",
+  "dexterity": "ловкость",
+  "constitution": "телосложение",
+  "intelligence": "интеллект",
+  "wisdom": "мудрость",
+  "charisma": "харизма"
 }
